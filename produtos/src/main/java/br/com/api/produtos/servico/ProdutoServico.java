@@ -24,8 +24,8 @@ public class ProdutoServico {
         return pr.findAll();
     }
 
-    //Método para cadastrar produtos
-    public ResponseEntity<?> cadastrar(ProdutoModelo pm){
+    //Método para cadastrar e alterar produtos
+    public ResponseEntity<?> cadastrarAlterar(ProdutoModelo pm, String acao){
 
         //MÉTODO PARA VALIDAR O PRODUTO.
         if(pm.getNome().equals("")){
@@ -37,8 +37,13 @@ public class ProdutoServico {
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
             //caso não tenha nome da marca retornará uma mensagem
         }else{
-            return new ResponseEntity<ProdutoModelo>(pr.save(pm),HttpStatus.CREATED);
-            //se estiver tudo ok, será salvo
+            if(acao.equals("cadastrar")){
+                return new ResponseEntity<ProdutoModelo>(pr.save(pm),HttpStatus.CREATED);
+            //se estiver tudo ok, será cadastrado o produto no banco de dados
+            }else{
+                return new ResponseEntity<ProdutoModelo>(pr.save(pm),HttpStatus.OK);
+                //Para fazer alteração do produto no banco de dados
+            }
         }
     }
     
