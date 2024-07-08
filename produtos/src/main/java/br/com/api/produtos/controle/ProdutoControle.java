@@ -24,7 +24,7 @@ public class ProdutoControle {
 
     @GetMapping("/") // rota de requisição, exibirá algum dado
     public String rota (){
-        return "API de produtos Funcionando!";
+        return "API dos produtos Funcionando corretamente!";
     }
 
     @GetMapping("/listar")
