@@ -18,8 +18,7 @@ public class ProdutoServico {
     @Autowired
     private RespostaModelo rm;
 
-
-    //Método para listas todos os produtos
+    //Método para listar todos os produtos
     public Iterable<ProdutoModelo> listar(){
         return pr.findAll();
     }
